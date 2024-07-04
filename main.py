@@ -1,6 +1,6 @@
 from college_logic.loadCsv import loadCsv
 from college_logic.predict_college import predict_colleges
-from fetching import connect_to_mongodb, fetch_score_and_gmail
+from MongoDb.fetching import connect_to_mongodb, fetch_score_and_gmail
 
 
 # Establish MongoDB connection
@@ -28,7 +28,7 @@ csv_file_path = r'C:\Users\HP\Desktop\Python College Predictor\college_logic\Col
 cutoffs = loadCsv(csv_file_path)
 connect_to_mongodb()
 print('hello')
-for student in fetch_score_and_gmail():
+for student in fetch_score_and_gmail(db,collection_name):
     eligible_colleges = predict_colleges(cutoffs, student)
     
     if eligible_colleges:
@@ -40,3 +40,4 @@ for student in fetch_score_and_gmail():
     
     print(f"Sending email to {student['email']}:\n{body}\n")
     # send_email(student['email'], " College Predictor Results", body)
+

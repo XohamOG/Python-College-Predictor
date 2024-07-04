@@ -1,5 +1,6 @@
 import pymongo
-from pymongo import MongoClient
+from pymongo import MongoClient 
+collection_name = score
 
 # Function to establish MongoDB connection
 def connect_to_mongodb(host='localhost', port=27017, db_name='mydatabase'):

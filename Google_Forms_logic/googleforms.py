@@ -4,7 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from pymongo import MongoClient
 
 
-collection_name = scores
+collection_name = score
 
 
 
