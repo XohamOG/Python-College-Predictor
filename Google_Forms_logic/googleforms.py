@@ -5,7 +5,7 @@ from pymongo import MongoClient
 
 # Define Google Sheets and MongoDB connection settings
 scope = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-credentials = ServiceAccountCredentials.from_json_keyfile_name(r'C:\Users\HP\Desktop\Python College Predictor\Google_Forms_logic\credentials.json',scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name(r'C:\Users\HP\Desktop\Python College Predictor\Google_Forms_logic\credentials.json', scope)
 gc = gspread.authorize(credentials)
 
 # Open a Google Sheets spreadsheet by its URL
@@ -48,18 +48,19 @@ for record in data:
     print(f"Timestamp: {record['Timestamp']}, Name: {record['Name']}, Gmail: {record['Gmail']}, Score: {record['Score']}, Category: {record['Category']}, Preferred Courses: {record['Preferred Courses']}")
 
 # Function to establish MongoDB connection
-def connect_to_mongodb(host='localhost', port=27017, db_name='mydatabase'):
-    client = MongoClient(host, port)
+def connect_to_mongodb(uri, db_name='mydatabase'):
+    client = MongoClient(uri)
     db = client[db_name]
     return db
+
 # MongoDB connection settings
-db = connect_to_mongodb()
+# Replace the placeholder with your MongoDB Atlas connection string
+mongodb_uri = 'mongodb+srv://Soham:sohampatil@cluster0.ltgwck7.mongodb.net/'  # Replace this with your actual MongoDB Atlas connection string
+db = connect_to_mongodb(mongodb_uri)
 collection_name = 'scores'  # Replace 'students' with your collection name
 collection = db[collection_name]
 
-
-
-#adding the data extracted from google sheet api to MongoDb server
+# adding the data extracted from google sheet api to MongoDb server
 
 # Function to check if a document with the same Timestamp already exists in MongoDB
 def document_exists(timestamp):
@@ -77,5 +78,3 @@ if new_data_to_insert:
     print(f"Inserted {len(result.inserted_ids)} new documents into MongoDB.")
 else:
     print("No new data to insert into MongoDB.")
-
-

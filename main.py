@@ -8,6 +8,7 @@ import subprocess
 import time
 from bson.objectid import ObjectId
 from password import password
+
 #--------------------------------------------------------------------------------------------------------
 
 # Email configuration
@@ -42,7 +43,9 @@ def send_email(receiver_email, subject, body):
 #--------------------------------------------------------------------------------------------------------
 
 # Establish MongoDB connection
-db = connect_to_mongodb()
+# Replace the placeholder with your MongoDB Atlas connection string
+mongodb_uri = 'mongodb+srv://Soham:sohampatil@cluster0.ltgwck7.mongodb.net/'  # Replace this with your actual MongoDB Atlas connection string
+db = connect_to_mongodb(mongodb_uri)
 # Fetch Score and Gmail from MongoDB collection
 collection_name = 'scores'
 
@@ -92,8 +95,7 @@ def main():
             else:
                 print(f"Failed to send email to {student['Gmail']}.")
 
-
-        time.sleep(3600) 
+        time.sleep(69) 
 
 if __name__ == "__main__":
     main()
