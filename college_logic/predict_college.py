@@ -1,10 +1,6 @@
 import csv
 from college_logic.loadCsv import loadCsv
 
-
-
-
-
 cutoffs = loadCsv(r"C:\Users\HP\Desktop\Python College Predictor\college_logic\Colleges.csv")
 
 
