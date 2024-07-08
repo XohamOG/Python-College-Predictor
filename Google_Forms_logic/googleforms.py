@@ -55,7 +55,7 @@ def connect_to_mongodb(uri, db_name='mydatabase'):
 
 # MongoDB connection settings
 # Replace the placeholder with your MongoDB Atlas connection string
-mongodb_uri = 'mongodb+srv://Soham:sohampatil@cluster0.ltgwck7.mongodb.net/'  # Replace this with your actual MongoDB Atlas connection string
+mongodb_uri = r"mongodb+srv://soham:soham11@cluster0.k6kupje.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Replace this with your actual MongoDB Atlas connection string
 db = connect_to_mongodb(mongodb_uri)
 collection_name = 'scores'  # Replace 'students' with your collection name
 collection = db[collection_name]
