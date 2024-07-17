@@ -1,7 +1,7 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from pymongo import MongoClient
-
+from password import mongodburi
 
 # Define Google Sheets and MongoDB connection settings
 scope = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -55,7 +55,7 @@ def connect_to_mongodb(uri, db_name='mydatabase'):
 
 # MongoDB connection settings
 # Replace the placeholder with your MongoDB Atlas connection string
-mongodb_uri = r"mongodb+srv://soham:soham11@cluster0.k6kupje.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Replace this with your actual MongoDB Atlas connection string
+mongodb_uri =  mongodburi # Replace this with your actual MongoDB Atlas connection string
 db = connect_to_mongodb(mongodb_uri)
 collection_name = 'scores'  # Replace 'students' with your collection name
 collection = db[collection_name]
